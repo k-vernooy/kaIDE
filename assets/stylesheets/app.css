@@ -1,0 +1,23 @@
+#darkText, #darkCheck {
+    display: inline-block;
+}
+
+#ide {
+    width: 50%;
+    height: calc(100vh - 60px);
+    background-color: grey;
+}
+
+.dragger {
+    cursor: col-resize;
+}
+
+#mainDrag {
+    width: 5px;
+    height: 100%;
+    background-color: black;
+    position: absolute;
+    right: 0;
+    top: 0;
+    left: calc(50% - 5px);
+}

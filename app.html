@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>kaIDE | Home</title>
+
+		<link rel='stylesheet' href='assets/stylesheets/main.css'>
+		<link rel='stylesheet' href='assets/stylesheets/app.css'>
+
+		<link rel='icon' href='favicon.ico' type='image/x-icon'>
+		<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+	</head>
+	<body>
+		<div id='navBar'>
+			<a href='index.html'>
+				<div class='navSection'>
+					Home
+				</div>
+			</a>
+			<a href='about.html'>
+				<div class='navSection'>
+					About
+				</div>
+			</a>
+			<a href='app.html'>
+				<div class='navSection'>
+					App
+				</div>
+			</a>
+			<a href='contact.html'>
+				<div class='navSection'>
+					Contact
+				</div>
+			</a>
+		</div>
+
+		<div id='content'>
+
+			<div id='ide'>
+
+				<div id='darkmodeInput'>
+					<input id='darkCheck' type='checkbox'>
+					<p id='darkText'>Dark Mode</p>
+				</div>
+
+				<div class=dragger id='mainDrag' onclick=drag(this.id)></div>
+			</div>
+
+			<div id='display'>
+				<div id='input'></div>
+			</div>
+
+		</div>
+
+		<script>
+			
+			function resizeToMinimum(){
+				var minimum    = [1000, 780];
+				var current    = [window.outerWidth, window.outerHeight];
+				var restricted = [];
+				var i          = 2;
+
+				while(i-- > 0){
+					restricted[i] = minimum[i] > current[i] ? minimum[i] : current[i];
+				}
+
+				window.resizeTo(current[0], current[1]);
+			}
+
+			window.addEventListener('resize', resizeToMinimum, false)
+		
+		</script>
+
+		<footer>
+		</footer>
+	</body>
+</html>
