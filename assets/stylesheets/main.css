@@ -6,3 +6,60 @@
 :root {
 	--main-color: black;
 }
+
+@font-face {
+	font-family: "Soleil";
+	font-weight:500;
+	src: url("../fonts/soleil/Soleil-Bold.otf");
+}
+
+@font-face {
+	font-family: "Soleil";
+	font-weight:400;
+	src: url("../fonts/soleil/Soleil-Book.otf");
+}
+
+@font-face {
+	font-family: "Soleil";
+	font-weight:300;
+	src: url("../fonts/soleil/Soleil-Regular.otf");
+}
+
+@font-face {
+	font-family: "Soleil";
+	font-weight:200;
+	src: url("../fonts/soleil/Soleil-Light.otf");
+}
+
+
+body {
+	font-family: "Soleil"
+}
+
+#navBar {
+	width: calc(100% - 100px);
+	height: 60px;
+	background-color: black;
+	color: white;
+	padding-left: 100px;
+	cursor: pointer;
+}
+
+.navSection {
+	width: 100px;
+	display: inline-block;
+	line-height: 60px;
+	transition: .2s;
+}
+
+.navSection:hover {
+	color: rgb(113, 180, 255);
+}
+
+#topWelcome {
+	text-align: center;
+	background-color: black;
+	color: white;
+	height: 300px;
+	padding-top: 50px;
+}
