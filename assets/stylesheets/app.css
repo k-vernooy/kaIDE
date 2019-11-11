@@ -1,3 +1,19 @@
+:root {
+    --tabsHeight: 50px;
+
+
+    /* BACKGROUND COLORS */ 
+    --main-color: rgb(35, 40, 51);
+    --main-color-bright: rgb(43, 49, 63);
+    --main-color-dark: rgb(29, 33, 43);
+
+}
+
+@font-face {
+    src: url("../fonts/Monaco-Linux.ttf");
+    font-family: "Monaco";
+}
+
 #darkText, #darkCheck {
     display: inline-block;
 }
@@ -6,6 +22,8 @@
     width: 50%;
     height: calc(100vh - 60px);
     background-color: grey;
+    resize: horizontal;
+    overflow: hidden;
 }
 
 .dragger {
@@ -20,4 +38,43 @@
     right: 0;
     top: 0;
     left: calc(50% - 5px);
+}
+
+
+.topRow {
+    width: 100%;
+    background-color: var(--main-color-dark);
+    height: var(--tabsHeight);
+    display: inline-block;
+}
+
+#colsCont {
+    display: inline-block;
+    width: calc(75% - 6px);
+    height: calc(100% - (var(--tabsHeight) * 2) - 10px);
+    vertical-align: top;
+}
+
+#textInput {
+    display: inline-block;
+    width: calc(100% - 40px);
+    height: calc(100% - 40px);
+    font-size: 13px;
+    font-family: "Monaco";
+    background-color: var(--main-color);
+    color: white;
+    transition: .2s;
+    padding: 20px;
+    outline: none;
+}
+
+#textInput:focus {
+    background-color: var(--main-color-bright);
+}
+
+#leftCol {
+    width: 25%;
+    height: 100%;
+    display: inline-block;
+    background-color: var(--main-color-dark);
 }

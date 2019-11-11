@@ -55,10 +55,10 @@ a, a:hover, a:focus, a:active {
 	background-color: black;
 	color: white;
 	padding-left: 100px;
-	cursor: pointer;
 }
 
 .navSection {
+	cursor: pointer;
 	width: 100px;
 	display: inline-block;
 	line-height: 60px;
