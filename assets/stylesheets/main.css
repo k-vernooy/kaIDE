@@ -1,3 +1,5 @@
+@import "../fonts/inter/inter.css";
+
 * {
 	margin: 0;
 	padding: 0;
@@ -33,7 +35,18 @@
 
 
 body {
-	font-family: "Soleil"
+	font-family: "Soleil";
+}
+
+h1 {
+	font-size: 70px;
+	padding-bottom: 20px;
+}
+
+a, a:hover, a:focus, a:active {
+	outline: none;
+	text-decoration: none;
+	color: inherit;  
 }
 
 #navBar {
@@ -53,7 +66,7 @@ body {
 }
 
 .navSection:hover {
-	color: rgb(113, 180, 255);
+	color: hsl(212, 100%, 67%);
 }
 
 #topWelcome {
