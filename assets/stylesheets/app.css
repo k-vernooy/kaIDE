@@ -1,11 +1,12 @@
 :root {
-    --tabsHeight: 50px;
+    --tabsHeight: 40px;
 
 
     /* BACKGROUND COLORS */ 
     --main-color: rgb(35, 40, 51);
     --main-color-bright: rgb(43, 49, 63);
     --main-color-dark: rgb(29, 33, 43);
+    --main-color-darker: rgb(20, 23, 31);
 
 }
 
@@ -21,7 +22,7 @@
 #ide {
     width: 50%;
     height: calc(100vh - 60px);
-    background-color: grey;
+    background-color: var(--main-color-darker);
     resize: horizontal;
     overflow: hidden;
 }
@@ -46,6 +47,18 @@
     background-color: var(--main-color-dark);
     height: var(--tabsHeight);
     display: inline-block;
+}
+
+#buttonsRow {
+    margin-bottom: 5px;
+    height: 70px;
+}
+
+.icon {
+    margin-left: 20px;
+    display: inline-block;
+    cursor: pointer;
+    padding-top: 14px;
 }
 
 #colsCont {
@@ -87,6 +100,10 @@
     line-height: 20px;
 }
 
+#inputText::selection {
+    background: #95b4c7;
+}
+
 #textInput.bright {
     background-color: var(--main-color-bright);
 }
@@ -109,14 +126,15 @@
 
 .tab {
     width: 100px;
-    height: 80%;
+    height: 90%;
     background-color: var(--main-color-dark);
     color: rgb(136, 136, 136);
     text-align: center;
     font-size: 14px;
-    line-height: 45px;
+    line-height: 44px;
     position: relative;
-    top: 20%;
+    top: 10%;
+    cursor: pointer;
 }
 
 .tab.focusTab {
