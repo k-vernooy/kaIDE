@@ -8,6 +8,8 @@
 
 		<link rel='icon' href='favicon.ico' type='image/x-icon'>
 		<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+
+		<script src="assets/js/textarea.js"></script>
 	</head>
 	<body>
 		<div id='navBar'>
@@ -57,57 +59,16 @@
 					</div>
 				</div>
 
-
 				<div class=dragger id='mainDrag' onclick=drag(this.id)></div>
 			</div>
-
 		</div>
 
 		<script>
-			function brighten() {
-				document.getElementById("textInput").className += " bright";
-				document.getElementsByClassName("focusTab")[0].className += " bright";
-			}
-
-			function darken() {
-				document.getElementById("textInput").className = "";
-				document.getElementsByClassName("focusTab")[0].className = "tab focusTab";
-			}
-
-			function getLineNumber(textarea) {
-				var lines = textarea.value;
-
-				var cursLineCount = lines.substr(0, textarea.selectionStart).split("\n").length;
-				var bar = document.getElementById("blackLine")
-				var topdist = 19;
-
-				cursLineCount -= 1;
-				topdist += cursLineCount * 20;
-
-				bar.style.top = topdist + "px";
-
-				var lineCount = lines.split(/\r\n|\r|\n/).length;
-				var existingNumCount = document.getElementById("numbers").childElementCount;
-
-				var numbers = document.getElementById("numbers");
-
-				if ( existingNumCount > lineCount ) {
-					for ( var i = 0; i < existingNumCount - lineCount; i++ ) {
-  						numbers.removeChild(numbers.lastChild);
-					}
-				}
-				else {
-					for ( var i = existingNumCount; i < lineCount; i++ ) {
-						numbers.innerHTML += "<div class='number'>" + ( i + 1 ) + "</div>"
-					}
-				}
-			}
-
 			function resizeToMinimum(){
-				var minimum    = [1000, 780];
-				var current    = [window.outerWidth, window.outerHeight];
+				var minimum = [1000, 780];
+				var current = [window.outerWidth, window.outerHeight];
 				var restricted = [];
-				var i          = 2;
+				var i = 2;
 
 				while(i-- > 0){
 					restricted[i] = minimum[i] > current[i] ? minimum[i] : current[i];
@@ -117,7 +78,6 @@
 			}
 
 			window.addEventListener('resize', resizeToMinimum, false)
-		
 		</script>
 
 		<footer>
