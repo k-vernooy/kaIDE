@@ -3,6 +3,7 @@
 	<head>
 		<title>kaIDE | Home</title>
 		<link rel='stylesheet' href='assets/stylesheets/main.css'>
+		<link rel='stylesheet' href='assets/stylesheets/contact.css'>
 		<link rel='icon' href='favicon.ico' type='image/x-icon'>
 		<meta name='viewport' content='width=device-width, initial-scale=1.0'>
 	</head>
@@ -11,11 +12,6 @@
 			<a href='index.html'>
 				<div class='navSection'>
 					Home
-				</div>
-			</a>
-			<a href='about.html'>
-				<div class='navSection'>
-					About
 				</div>
 			</a>
 			<a href='app.html'>
@@ -31,7 +27,12 @@
 		</div>
 		<div id='topWelcome'>
 			<h1>Contact</h1>
-			<p>a free online IDE for web development</p>		
+			<form id='contact'>
+				<input type="text" id='firstName' placeholder="first name">
+				<input type="text" id='lastName' placeholder="last name">
+				<div id='bumper'></div>
+				<input type="text" id='email' placeholder="email address">
+			</form>
 		</div>
 
 		<footer>
