@@ -39,19 +39,58 @@
 				<div id='leftCol'></div>
 				<div id='colsCont'>
 					<div class='topRow'></div>
-					<div class='topRow' id='tabsRow'></div>
-					<textarea id='textInput'></textarea>
+					
+					<div class='topRow' id='tabsRow'>
+						<div class='tab focusTab'>
+							index.html
+						</div>
+					</div>
+
+					<div id='textInput'>
+						<div id='numbers'>
+							<div class='number'>1</div>
+							<div class='number'>2</div>
+							<div class='number'>3</div>
+							<div class='number'>4</div>
+							<div class='number'>5</div>
+						</div>
+						<div id='textCont'>
+							<div id='blackLine'></div>
+							<textarea onfocus="brighten()" onfocusout="darken()" placeholder="add code here" id='inputText' oninput='moveBlackLine()'></textarea>
+						</div>
+					</div>
 				</div>
 
 
 				<div class=dragger id='mainDrag' onclick=drag(this.id)></div>
 			</div>
 
-
 		</div>
 
 		<script>
-			
+			function brighten() {
+				document.getElementById("textInput").className += " bright";
+				document.getElementsByClassName("focusTab")[0].className += " bright";
+			}
+
+			function darken() {
+				document.getElementById("textInput").className = "";
+				document.getElementsByClassName("focusTab")[0].className = "tab focusTab";
+			}
+
+			function moveBlackLine() {
+				var lines = document.getElementById('inputText').value;
+				var lineCount = lines.split(/\r\n|\r|\n/).length
+				lineCount -= 1;
+
+				var bar = document.getElementById("blackLine")
+				var topdist = 19;
+
+				topdist += lineCount * 20;
+
+				bar.style.top = topdist + "px";
+			}
+
 			function resizeToMinimum(){
 				var minimum    = [1000, 780];
 				var current    = [window.outerWidth, window.outerHeight];
