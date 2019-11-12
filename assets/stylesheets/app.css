@@ -55,20 +55,39 @@
     vertical-align: top;
 }
 
-#textInput {
+#textCont {
+    width: calc(93% - 6px);
     display: inline-block;
-    width: calc(100% - 40px);
-    height: calc(100% - 40px);
-    font-size: 13px;
-    font-family: "Monaco";
-    background-color: var(--main-color);
-    color: white;
-    transition: .2s;
-    padding: 20px;
-    outline: none;
+    height: 100%;
 }
 
-#textInput:focus {
+#textInput {
+    display: inline-block;
+    width: calc(100% - 20px);
+    /* height: calc(100% - 40px); */
+    height: 100%;
+    background-color: var(--main-color);
+    transition: .2s;
+    padding-left: 0;
+    padding-right: 20px;
+}
+
+#inputText {
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    outline: none;
+    color: white;
+    border: none;
+    font-size: 13px;
+    font-family: "Monaco";
+    z-index: 5;
+    position: relative;
+    white-space: nowrap;
+    line-height: 20px;
+}
+
+#textInput.bright {
     background-color: var(--main-color-bright);
 }
 
@@ -77,4 +96,53 @@
     height: 100%;
     display: inline-block;
     background-color: var(--main-color-dark);
+}
+
+#blackLine {
+    width: 100%;
+    height: 19px;
+    background-color: rgba(0,0,0,.4);
+    position: relative;
+    top: 19px;
+    z-index: 4;
+}
+
+.tab {
+    width: 100px;
+    height: 80%;
+    background-color: var(--main-color-dark);
+    color: rgb(136, 136, 136);
+    text-align: center;
+    font-size: 14px;
+    line-height: 45px;
+    position: relative;
+    top: 20%;
+}
+
+.tab.focusTab {
+    background-color: var(--main-color);
+    color: rgb(163, 162, 162);
+}
+
+.focusTab.bright {
+    color: rgb(177, 177, 177);
+    background-color: var(--main-color-bright);
+}
+
+#numbers {
+    width: 7%;
+    display: inline-block;
+    height: 90%;
+    padding-top: 4.5%;
+    vertical-align: top;
+
+}
+
+.number {
+    width: 100%;
+    height: 20px;
+    text-align: center;
+    color: grey;
+    line-height: 25px;
+    /* background-color: black; */
 }
