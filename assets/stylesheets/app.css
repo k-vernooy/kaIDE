@@ -129,6 +129,10 @@
     position: relative;
     top: 10%;
     cursor: pointer;
+    display: inline-block;
+    border-right: 3px solid rgba(0, 0, 0, 0.486);
+    margin-right:0;
+    margin-left: 0;
 }
 
 .tab.focusTab {
@@ -145,7 +149,7 @@
     width: 7%;
     display: inline-block;
     height: 90%;
-    padding-top: 4.5%;
+    padding-top: 18px;
     vertical-align: top;
 
 }
