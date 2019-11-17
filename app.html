@@ -33,18 +33,26 @@
 
 			<div id='ide'>
 				<div id='leftCol'>
-					<div class='openFolder'>
-						<div class='file'>
-							<div class='arrow'>
-								<img src="assets/images/icons/fileSection/right-arrow.png" class='rightArrow'>
-							</div>
-							<div class='fileImage'>
-								<img src="assets/images/icons/fileSection/folder-closed.png" class='folder'>
-							</div>
+					<div class='folder'>
+						<div class='cont' onclick='showChildren(this)'>
+							<div class='arrow'></div>
+							<div class='fileImage'></div>
 							<div class='fileText'>
 								<p class='fileLabel' id='projectTitle'>myProject</p>
 							</div>
 						</div>
+						
+						<div class='children' style='display: none'>
+							<div class='file'>
+								<div class='cont'>
+									<div class='fileImage'></div>
+									<div class='fileText'>
+										<p class='fileLabel' id='projectTitle'>index.html</p>
+									</div>
+								</div>
+							</div>
+						</div>
+							
 					</div>
 				</div>
 				<div id='colsCont'>
@@ -83,6 +91,18 @@
 		</div>
 
 		<script>
+			jQuery(document).keydown(function(event) {
+					// If Control or Command key is pressed and the S key is pressed
+					// run save function. 83 is the key code for S.
+					if((event.ctrlKey || event.metaKey) && event.which == 83) {
+						// Save Function
+						event.preventDefault();
+						alert("save file")
+						return false;
+					}
+				}
+			);
+
 			function resizeToMinimum(){
 				var minimum = [1000, 780];
 				var current = [window.outerWidth, window.outerHeight];
@@ -99,6 +119,7 @@
 			window.addEventListener('resize', resizeToMinimum, false)
 		</script>
 		<script src="assets/js/textarea.js"></script>
+		<script src="assets/js/filebar.js"></script>
 
 		<footer>
 		</footer>
