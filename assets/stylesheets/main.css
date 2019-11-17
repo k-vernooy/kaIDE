@@ -7,8 +7,13 @@
 
 :root {
 	--main-color: black;
-	--blue-one: rgb(112, 179, 255);
+	--purple-one: rgb(198, 113, 255);
+	--purple-two: rgb(218, 163, 255);
+	--blue-one: rgb(45, 152, 252);
+	--blue-two: rgb(116, 188, 255);
 	--green-one: rgb(96, 255, 144);
+	--green-two: rgb(166, 255, 193);
+
 }
 
 @font-face {
@@ -99,7 +104,7 @@ p {
 
 .mainButton {
 	all: unset;
-	width: 130px;
+	width: 120px;
 	height: 40px;
 	border: 2px solid white;
 	margin-right: 20px;
@@ -109,22 +114,32 @@ p {
 	transition: .2s;
 }
 
-#getStarted {
-	color: var(--blue-one);
+.mainButton#getStarted {
+	color: var(--blue-two);
 	border-color: var(--blue-one);
 }
 
-#getStarted:hover {
+.mainButton#getStarted:hover {
 	background-color: var(--blue-one);
 	color: black;
 }
 
-#contribute {
-	color: var(--green-one);
+.mainButton#contribute {
+	color: var(--green-two);
 	border-color: var(--green-one);
 }
 
-#contribute:hover {
+.mainButton#contribute:hover {
 	background-color: var(--green-one);
+	color: black;
+}
+
+.mainButton#contact {
+	color: var(--purple-two);
+	border-color: var(--purple-one);
+}
+
+.mainButton#contact:hover {
+	background-color: var(--purple-one);
 	color: black;
 }
