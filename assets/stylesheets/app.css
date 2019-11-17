@@ -8,6 +8,7 @@
     --main-color-dark: rgb(29, 33, 43);
     --main-color-darker: rgb(20, 23, 31);
 
+    --ide-width: 70%;
 }
 
 @font-face {
@@ -20,7 +21,7 @@
 }
 
 #ide {
-    width: 50%;
+    width: var(--ide-width);
     height: calc(100vh - 60px);
     background-color: var(--main-color-darker);
     resize: horizontal;
@@ -38,7 +39,7 @@
     position: absolute;
     right: 0;
     top: 0;
-    left: calc(50% - 5px);
+    left: calc(var(--ide-width) - 5px);
 }
 
 
@@ -108,13 +109,6 @@
     background-color: var(--main-color-bright);
 }
 
-#leftCol {
-    width: 25%;
-    height: 100%;
-    display: inline-block;
-    background-color: var(--main-color-dark);
-}
-
 #blackLine {
     width: 100%;
     height: 19px;
@@ -162,5 +156,23 @@
     text-align: center;
     color: grey;
     line-height: 25px;
-    /* background-color: black; */
+}
+
+
+/* FOR THE LEFTHAND COLUMN OF FILES */
+/* ====================================== */
+#leftCol {
+    width: 25%;
+    height: calc(100% - 20px);
+    padding-top: 20px;
+    display: inline-block;
+    background-color: var(--main-color-dark);
+}
+
+.file {
+    display: block;
+    width: 100%;
+    background-color: black;
+    height: 20px;
+    color: white;
 }
