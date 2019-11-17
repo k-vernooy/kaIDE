@@ -17,18 +17,22 @@ function darken() {
 }
 
 function getLineNumber() {
-    var lines = textarea.value;
-    var cursLineCount = lines.substr(0, textarea.selectionStart).split("\n").length;
-    var topdist = 19;
+    // console.log("FIREEEEEE")
+
+    var lines = document.getElementById('inputText').value;
+    var cursLineCount = lines.substr(0, document.getElementById('inputText').selectionStart).split("\n").length;
 
     cursLineCount -= 1;
+    console.log("cursor on line " + (cursLineCount + 1) )
+    
+    var topdist = 19;
     topdist += cursLineCount * 20;
     bar.style.top = topdist + "px";
 
     var lineCount = lines.split(/\r\n|\r|\n/).length;
     var existingNumCount = document.getElementById("numbers").childElementCount;
 
-    if ( existingNumCount > lineCount ) {
+    if ( existingNumCount >= lineCount ) {
         for ( var i = 0; i < existingNumCount - lineCount; i++ ) {
               numbers.removeChild(numbers.lastChild);
         }
@@ -40,20 +44,15 @@ function getLineNumber() {
     }
 }
 
-if ( textarea.addEventListener ) {
-    textarea.addEventListener('keydown',this.keyHandler,false);
-} 
-else if ( textarea.attachEvent ) {
-    textarea.attachEvent('onkeydown',this.keyHandler) // IE
-}
+// if ( textarea.addEventListener ) {
+//     textarea.addEventListener('keydown', this.keyHandler, true );
+// } 
 
-function keyHandler(e) {
-    var TABKEY = 9;
-    if(e.keyCode == TABKEY) {
-        this.value += "    ";
-        if(e.preventDefault) {
-            e.preventDefault();
-        }
-        return false;
+$(document).on("keydown", function (event) {
+    var key = event.keyCode;
+    $('#inputText').trigger('change');
+        if ( (key >= 37 && key <= 40) || key == 13 || key == 8 ) {
+        getLineNumber();
     }
-}
+
+ });
