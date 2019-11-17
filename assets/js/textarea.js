@@ -48,7 +48,7 @@ function getLineNumber() {
 //     textarea.addEventListener('keydown', this.keyHandler, true );
 // } 
 
-$(document).on("keydown", function (event) {
+$(document).on("keyup", function (event) {
     var key = event.keyCode;
     $('#inputText').trigger('change');
         if ( (key >= 37 && key <= 40) || key == 13 || key == 8 ) {
