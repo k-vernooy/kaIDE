@@ -83,7 +83,7 @@
 						</div>
 						<div id='textCont'>
 							<div id='blackLine'></div>
-							<div onfocus="brighten()" onfocusout="darken()" placeholder="add code here" id='inputText' contenteditable="true"></div>
+							<div onfocus="brighten()" onfocusout="darken()" placeholder="add code here" id='inputText' oninput="if(this.innerHTML.trim()==='<br>')this.innerHTML=''" contenteditable="true"></div>
 						</div>
 					</div>
 				</div>
