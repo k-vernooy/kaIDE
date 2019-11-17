@@ -6,24 +6,24 @@
 		<link rel='stylesheet' href='assets/stylesheets/main.css'>
 		<link rel='stylesheet' href='assets/stylesheets/app.css'>
 
-		<link rel='icon' href='favicon.ico' type='image/x-icon'>
+		<link rel='icon' href='favicon.png' type='image/x-icon'>
 		<meta name='viewport' content='width=device-width, initial-scale=1.0'>
-
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	</head>
 	<body>
 		<div id='navBar'>
 			<a href='index.html'>
-				<div class='navSection'>
+				<div id='homeBar' class='navSection'>
 					Home
 				</div>
 			</a>
 			<a href='app.html'>
-				<div class='navSection'>
+				<div id='appBar' class='navSection'>
 					App
 				</div>
 			</a>
 			<a href='contact.html'>
-				<div class='navSection'>
+				<div id='contactBar' class='navSection'>
 					Contact
 				</div>
 			</a>
@@ -59,7 +59,7 @@
 						</div>
 						<div id='textCont'>
 							<div id='blackLine'></div>
-							<textarea onfocus="brighten()" onfocusout="darken()" placeholder="add code here" id='inputText' onkeyup="getLineNumber();" onmousedown="getLineNumber();"></textarea>
+							<textarea onfocus="brighten()" onfocusout="darken()" placeholder="add code here" id='inputText' ></textarea>
 						</div>
 					</div>
 				</div>

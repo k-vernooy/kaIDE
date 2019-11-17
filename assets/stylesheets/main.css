@@ -7,6 +7,8 @@
 
 :root {
 	--main-color: black;
+	--blue-one: rgb(112, 179, 255);
+	--green-one: rgb(96, 255, 144);
 }
 
 @font-face {
@@ -65,14 +67,22 @@ p {
 
 .navSection {
 	cursor: pointer;
-	width: 100px;
-	display: inline-block;
-	line-height: 60px;
-	transition: .2s;
+    display: inline-block;
+    line-height: 60px;
+    transition: .2s;
+    margin-right: 70px;
 }
 
 .navSection:hover {
-	color: hsl(212, 100%, 67%);
+	color: var(--blue-one);
+}
+
+#appBar:hover {
+	color: var(--green-one);
+}
+
+#contactBar:hover {
+	color: hsl(256, 100%, 76%);
 }
 
 #topWelcome {
@@ -100,21 +110,21 @@ p {
 }
 
 #getStarted {
-	color: rgb(134, 184, 250);
-	border-color: rgb(94, 164, 255);
+	color: var(--blue-one);
+	border-color: var(--blue-one);
 }
 
 #getStarted:hover {
-	background-color: rgb(94, 164, 255);
+	background-color: var(--blue-one);
 	color: black;
 }
 
 #contribute {
-	color: rgb(144, 253, 177);
-	border-color: rgb(94, 255, 142);
+	color: var(--green-one);
+	border-color: var(--green-one);
 }
 
 #contribute:hover {
-	background-color: rgb(94, 255, 142);
+	background-color: var(--green-one);
 	color: black;
 }
