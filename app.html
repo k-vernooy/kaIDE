@@ -70,8 +70,10 @@
 					</div>
 					
 					<div class='topRow' id='tabsRow'>
-						<div class='tab focusTab'>
+						<div class='tab focusTab' onclick=switchTab(this)>
 							index.html
+						</div><div class='tab' onclick=switchTab(this)>
+							main.css
 						</div>
 					</div>
 
@@ -81,7 +83,7 @@
 						</div>
 						<div id='textCont'>
 							<div id='blackLine'></div>
-							<textarea onfocus="brighten()" onfocusout="darken()" placeholder="add code here" id='inputText' ></textarea>
+							<div onfocus="brighten()" onfocusout="darken()" placeholder="add code here" id='inputText' contenteditable="true"></div>
 						</div>
 					</div>
 				</div>
@@ -117,9 +119,21 @@
 			}
 
 			window.addEventListener('resize', resizeToMinimum, false)
+
+			function setConfirmUnload(on) {
+				window.onbeforeunload = (on) ? unloadMessage : null;
+			}
+
+			function unloadMessage() {
+				return "Are you sure you want to leave this page";
+			}
+
+			setConfirmUnload(false);
 		</script>
+
 		<script src="assets/js/textarea.js"></script>
 		<script src="assets/js/filebar.js"></script>
+		<script src="assets/js/misc.js"></script>
 
 		<footer>
 		</footer>
