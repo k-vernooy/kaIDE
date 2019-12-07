@@ -79,30 +79,13 @@
     display: inline-block;
     width: calc(100% - 20px);
     /* height: calc(100% - 40px); */
-    height: 100%;
+    height: calc(100% - 18px);
+    padding-top: 18px;
     background-color: var(--main-color);
     transition: .2s;
     padding-left: 0;
     padding-right: 20px;
-}
-
-#inputText {
-    width: 100%;
-    height: 100%;
-    background-color: transparent;
-    outline: none;
-    color: white;
-    border: none;
-    font-size: 13px;
-    font-family: "Monaco";
-    z-index: 5;
-    position: relative;
-    white-space: nowrap;
-    line-height: 20px;
-}
-
-#inputText::selection {
-    background: #95b4c7;
+    
 }
 
 #textInput.bright {
@@ -148,18 +131,18 @@
 #numbers {
     width: 7%;
     display: inline-block;
-    height: 90%;
-    padding-top: 18px;
+    height: 100%;
     vertical-align: top;
-
 }
 
 .number {
     width: 100%;
-    height: 20px;
+    height: 18px;
     text-align: center;
     color: grey;
-    line-height: 25px;
+    font-size: 15px;
+    line-height: 23px;
+    font-weight: lighter;
 }
 
 
@@ -233,7 +216,6 @@
 .fileText {
     display: inline-block;
     width: 50%;
-    /* background-color: white; */
     vertical-align: middle;
     height: 100%;
 }
@@ -253,4 +235,44 @@
     position: absolute;
     color: gray;
     background-color: transparent;
-  }
+}
+
+#inputArray input {
+    border: none;
+    outline: none;
+    display: block;
+    width: 100%;
+    height: 18px;
+    background-color: transparent;
+    color: rgb(255, 255, 255);
+    font-size: 13px;
+    font-family: "Monaco";
+    z-index: 5;
+    position: relative;
+    white-space: nowrap;
+    line-height: 20px;
+    /* caret-color: transparent; */
+}
+
+#inputArray input::selection {
+    background: #95b4c7;
+}
+
+#render {
+    /* background: white; */
+    /* background-color: rgba(255, 255, 255, 0); */
+    width: 100%;
+    height: 100%;
+    top: -18px;
+    position: relative;
+}
+
+#render .row {
+    width: 100%;
+    height: 18px;
+    background-color: rgba(0, 0, 83, 0);
+}
+
+#render .row.dark {
+    background-color: rgba(0, 0, 0, 0.349);
+}
