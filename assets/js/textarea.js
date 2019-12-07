@@ -16,46 +16,13 @@ function darken() {
     document.getElementsByClassName("focusTab")[0].className = "tab focusTab";
 }
 
-function getLineNumber() {
-
-// NONE OF THIS WILL WORK ANYMORE, 
-// WE SWITCHED TO A BETTER CONTENTEDITABLE DIV
-
-    // var lines = document.getElementById('inputText').value;
-    // var cursLineCount = lines.substr(0, document.getElementById('inputText').selectionStart).split("\n").length;
-
-    // cursLineCount -= 1;
-    // console.log("cursor on line " + (cursLineCount + 1) )
-    
-    // var topdist = 19;
-    // topdist += cursLineCount * 20;
-    // bar.style.top = topdist + "px";
-
-    // var lineCount = lines.split(/\r\n|\r|\n/).length;
-    // var existingNumCount = document.getElementById("numbers").childElementCount;
-
-    // if ( existingNumCount >= lineCount ) {
-    //     for ( var i = 0; i < existingNumCount - lineCount; i++ ) {
-    //           numbers.removeChild(numbers.lastChild);
-    //     }
-    // }
-    // else {
-    //     for ( var i = existingNumCount; i < lineCount; i++ ) {
-    //         numbers.innerHTML += "<div class='number'>" + ( i + 1 ) + "</div>"
-    //     }
-    // }
-}
-
-// if ( textarea.addEventListener ) {
-//     textarea.addEventListener('keydown', this.keyHandler, true );
-// } 
-
 function keyHandler(event) {
-    // console.log("triggered")
-    if ( event.key == "ArrowLeft" || event.key == "ArrowRight" || event.key == "ArrowDown" ||  event.key == "ArrowUp" || event.key == "Enter") {
-        switchLine(event.key);
-    }
+    var size = document.getElementsByClassName("inputEl").length;
+    var pos = document.activeElement.id.split("-")[0];
 
+    if ( event.key == "Enter" ) {
+        addInputEl();
+    }
 }
 
 function addNumber() {
@@ -67,18 +34,29 @@ function addNumber() {
     document.getElementById("numbers").appendChild(ap);
 }
 
+function focusNextLine() {
+    // console.log(;
+
+    document.getElementById((parseInt(document.activeElement.id.split("-")[0]) + 1) + "-i").focus();
+}
+
 function addInputEl() {
     var div = document.createElement('div');
+    var raw = document.createElement('span');
+    var pretty = document.createElement('div');
     var input = document.createElement('input');
     var size = document.getElementsByClassName("inputEl").length;
 
+    pretty.className = "pretty";
+    raw.className = "raw";
     input.className = "inputEl";
     input.id = (size + 1) + "-i";
     input.type = "text";
     input.keydown = function(event){keyHandler(event)}; 
     div.id = (size + 1 ) + "-r";
     div.className = "row";
-
+    div.appendChild(raw);
+    div.appendChild(pretty);
 
     document.getElementById("inputArray").appendChild(input);
     document.getElementById("render").appendChild(div);
@@ -86,30 +64,28 @@ function addInputEl() {
     var num = -18 * (size + 1);
     document.getElementById("render").style.top = num + "px";
 
-    document.getElementById("inputArray").childNodes[document.getElementById("inputArray").childNodes.length - 1].focus();
+    focusNextLine();
     focusInput();
 
     addNumber();
+
+    //remove placeholder
+    document.getElementById("1-i").placeholder = ""
 }
 
 function removeInputEl() {
-}
-
-
-function switchLine(key) {
-    var size = document.getElementsByClassName("inputEl").length;
-    var pos = document.activeElement.id.split("-")[0];
-    if ( key == "Enter" && size == pos ) {
-        addInputEl();
-    }
-    console.log("size: " + size);
-    console.log("pos: " + pos);
 }
 
 function focusInput() {
     var id = document.activeElement.id;
     $('#render .dark').removeClass("dark");
     document.getElementById(id.split('-')[0] + "-r").classList.add("dark");
+}
+
+function renderCont() {
+    var el = document.activeElement;
+    var raw = document.getElementById(el.id.split('-')[0] + "-r").childNodes[0]
+    raw.innerHTML = el.value;
 }
 
 $( "#inputArray" ).on("keydown", ".inputEl", function(event){
@@ -119,3 +95,9 @@ $( "#inputArray" ).on("keydown", ".inputEl", function(event){
 $( "#inputArray" ).on("focus", ".inputEl", function(event){
     focusInput();
 });
+
+$( "#inputArray" ).on("input", "input", function(event){
+    renderCont();
+});
+
+focusInput();
