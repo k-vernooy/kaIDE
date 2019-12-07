@@ -5,12 +5,15 @@
 
 		<link rel='stylesheet' href='assets/stylesheets/main.css'>
 		<link rel='stylesheet' href='assets/stylesheets/app.css'>
-
 		<link rel='icon' href='favicon.png' type='image/x-icon'>
+		
 		<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 	</head>
 	<body>
+		
 		<div id='navBar'>
 			<a href='index.html'>
 				<div id='homeBar' class='navSection'>
@@ -82,8 +85,13 @@
 							<div class='number'>1</div>
 						</div>
 						<div id='textCont'>
-							<div id='blackLine'></div>
-							<div onfocus="brighten()" onfocusout="darken()" placeholder="add code here" id='inputText' oninput="if(this.innerHTML.trim()==='<br>')this.innerHTML=''" contenteditable="true"></div>
+							<div id='inputArray'>
+								<input class='inputEl' id='1-i' type='text' placeholder="add code here" autofocus>
+							</div>
+							<div id='render'>
+								<div id='caret'></div>
+								<div id='1-r' class='row'></div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -92,49 +100,9 @@
 			</div>
 		</div>
 
-		<script>
-			jQuery(document).keydown(function(event) {
-					// If Control or Command key is pressed and the S key is pressed
-					// run save function. 83 is the key code for S.
-					if((event.ctrlKey || event.metaKey) && event.which == 83) {
-						// Save Function
-						event.preventDefault();
-						alert("save file")
-						return false;
-					}
-				}
-			);
-
-			function resizeToMinimum(){
-				var minimum = [1000, 780];
-				var current = [window.outerWidth, window.outerHeight];
-				var restricted = [];
-				var i = 2;
-
-				while(i-- > 0){
-					restricted[i] = minimum[i] > current[i] ? minimum[i] : current[i];
-				}
-
-				window.resizeTo(current[0], current[1]);
-			}
-
-			window.addEventListener('resize', resizeToMinimum, false)
-
-			function setConfirmUnload(on) {
-				window.onbeforeunload = (on) ? unloadMessage : null;
-			}
-
-			function unloadMessage() {
-				return "Are you sure you want to leave this page";
-			}
-
-			setConfirmUnload(false);
-		</script>
-
 		<script src="assets/js/textarea.js"></script>
 		<script src="assets/js/filebar.js"></script>
 		<script src="assets/js/misc.js"></script>
-
 		<footer>
 		</footer>
 	</body>
