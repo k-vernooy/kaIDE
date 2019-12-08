@@ -12,7 +12,7 @@
 }
 
 @font-face {
-    src: url("../fonts/Monaco-Linux.ttf");
+    src: url("../../fonts/Monaco-Linux.ttf");
     font-family: "Monaco";
 }
 
@@ -178,16 +178,11 @@
     display: inline-block;
     width: 30px;
     height: 100%;
-    /* background-color: white; */
     vertical-align: middle;
-    background-image: url("../images/icons/fileSection/right-arrow.png");
+    background-image: url("../../images/icons/fileSection/right-arrow.png");
     background-size: 15px;
     background-repeat: no-repeat;
     background-position-x: 5px;
-}
-
-.folder > .cont.open > .arrow {
-    background-image: url("../images/icons/fileSection/down-arrow.png");
 }
 
 .fileImage {
@@ -202,16 +197,21 @@
 }
 
 .folder > .cont > .fileImage {
-    background-image: url("../images/icons/fileSection/folder-closed.png");
+    background-image: url("../../images/icons/fileSection/folder-closed.png");
 }
 
-.htmlFileIcon > .fileImage {
-    background-image: url("../images/icons/fileSection/folder-closed.png");
+.folder > .cont.open > .arrow {
+    background-image: url("../../images/icons/fileSection/down-arrow.png");
 }
 
 .folder > .cont.open > .fileImage {
-    background-image: url("../images/icons/fileSection/folder-open.png");
+    background-image: url("../../images/icons/fileSection/folder-open.png");
 }
+
+.htmlFileIcon > .fileImage {
+    background-image: url("../../images/icons/fileSection/folder-closed.png");
+}
+
 
 .fileText {
     display: inline-block;
@@ -224,6 +224,10 @@
     padding-top: 2%;
     width: 18px;
     height: 18px;
+}
+
+.fileLabel {
+    margin-bottom: 19px;
 }
 
 .children {

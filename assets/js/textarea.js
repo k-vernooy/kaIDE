@@ -170,7 +170,12 @@ $( "#inputArray" ).on("keydown", ".inputEl", function(event){
 });
 
 $( "#inputArray" ).on("focus", ".inputEl", function(event){
+    brighten();
     updateDarkBar();
+});
+
+$( "#inputArray" ).on("focusout", ".inputEl", function(event){
+    darken();
 });
 
 $( "#inputArray" ).on("input", "input", function(event){
