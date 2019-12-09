@@ -10,6 +10,9 @@
 		<meta name='viewport' content='width=device-width, initial-scale=1.0'>
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<link rel="stylesheet" href="assets/stylesheets/app/highlight-theme.css">
+		<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.16.2/build/highlight.min.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
 
 	</head>
 	<body>
@@ -89,8 +92,10 @@
 								<input class='inputEl' id='1-i' type='text' placeholder="" autofocus>
 							</div>
 							<div id='render'>
-								<div id='caret'></div>
-								<div id='1-r' class='row'><span class='raw'></span><div id='pretty'></div></div>
+								<div id='highlighted'>
+									<pre class='html' id='code'>add code here</pre>
+								</div>
+								<div id='1-r' class='row'><span class='raw'></span></div>
 							</div>
 						</div>
 					</div>
