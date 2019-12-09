@@ -58,7 +58,6 @@ function addNumber() {
 
 function removeNumber() {
     var exist = $("#numbers > div").length;
-    console.log
     var re = document.getElementsByClassName("number")[exist - 1];
     re.parentNode.removeChild(re);
 }
@@ -133,7 +132,6 @@ function addInputEl() {
 
     moveRenderDiv();
     focusNextLine();
-    updateDarkBar();
     addNumber();
 
     document.getElementById("1-i").placeholder = ""
@@ -142,28 +140,67 @@ function addInputEl() {
 function removeInputEl(num) {
     var input = document.getElementById(num + "-i");
     var raw = document.getElementById(num + "-r");
+    var val = input.value;
+    var len = document.getElementById((num - 1) + "-i").value.length;
+    
+    document.getElementById((num - 1) + "-i").value += val;
+    document.getElementById((num - 1) + "-r").childNodes[0].innerHTML += val;
+    
+    setCaretPosition(((num - 1) + "-i"), len)
     input.parentNode.removeChild(input);
     raw.parentNode.removeChild(raw);
 
     updateIdList();
     moveRenderDiv();
     removeNumber();
+    
     if ( num != 1 ) {
         document.getElementById((num - 1) + "-i" ).focus();
     }
-}
-
-function updateDarkBar() {
-    var id = document.activeElement.id;
-    $('#render .dark').removeClass("dark");
-    document.getElementById(id.split('-')[0] + "-r").classList.add("dark");
 }
 
 function renderCont() {
     var el = document.activeElement;
     var raw = document.getElementById(el.id.split('-')[0] + "-r").childNodes[0]
     raw.innerHTML = el.value;
+
+    renderFullCode();
 }
+
+function renderFullCode() {
+    var inputs = document.getElementById("inputArray");
+    var code = document.getElementById("code");
+    code.innerHTML = "";
+
+    for ( var i = 0; i < inputs.getElementsByClassName("inputEl").length; i++ ) {
+        code.innerHTML += inputs.getElementsByClassName("inputEl")[i].value;
+        console.log( inputs.getElementsByClassName("inputEl")[i]);
+        code.innerHTML += "\n";
+    }
+
+    updateH();
+}
+
+function setCaretPosition(elemId, caretPos) {
+    var elem = document.getElementById(elemId);
+
+    if(elem != null) {
+        if(elem.createTextRange) {
+            var range = elem.createTextRange();
+            range.move('character', caretPos);
+            range.select();
+        }
+        else {
+            if(elem.selectionStart) {
+                elem.focus();
+                elem.setSelectionRange(caretPos, caretPos);
+            }
+            else
+                elem.focus();
+        }
+    }
+}
+
 
 $( "#inputArray" ).on("keydown", ".inputEl", function(event){
     keyHandler(event);
@@ -171,7 +208,7 @@ $( "#inputArray" ).on("keydown", ".inputEl", function(event){
 
 $( "#inputArray" ).on("focus", ".inputEl", function(event){
     brighten();
-    updateDarkBar();
+    
 });
 
 $( "#inputArray" ).on("focusout", ".inputEl", function(event){
@@ -183,5 +220,11 @@ $( "#inputArray" ).on("input", "input", function(event){
 });
 
 $(document).ready(function() {
-    updateDarkBar();
+    document.getElementById("1-i").focus();
 });
+
+function updateH() {
+    document.querySelectorAll('pre').forEach((block) => {
+        hljs.highlightBlock(block);
+    });
+}
