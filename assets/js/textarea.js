@@ -41,10 +41,6 @@ function updateIdList() {
     for ( var i = 0; i < document.getElementsByClassName("inputEl").length; i++  ) {
         document.getElementsByClassName("inputEl")[i].id = (i + 1) + "-i";
     }
-
-    for ( var i = 0; i < document.getElementsByClassName("row").length; i++  ) {
-        document.getElementsByClassName("row")[i].id = (i + 1) + "-r";
-    }
 }
 
 function addNumber() {
@@ -62,11 +58,21 @@ function removeNumber() {
     re.parentNode.removeChild(re);
 }
 
+function getSelectionText() {
+    var text = "";
+    if (window.getSelection) {
+        text = window.getSelection().toString();
+    } else if (document.selection && document.selection.type != "Control") {
+        text = document.selection.createRange().text;
+    }
+    return text;
+}
+
 function focusLeftLine(event) {
 
     // checks to see if we need to focus 
     // the previous line due to a movement left of the cursor
-    if (document.activeElement.selectionStart == 0) {
+    if (document.activeElement.selectionStart == 0 && getSelectionText().length == 0) {
         event.preventDefault();
         if (document.activeElement.id.split("-")[0] != 1 && event.key == "Backspace") {
             removeInputEl(document.activeElement.id.split("-")[0])
@@ -81,12 +87,6 @@ function focusRightLine(event) {
     if (document.activeElement.selectionStart == document.activeElement.value.length ) {
         event.preventDefault();
         focusNextLine();
-        // if (document.activeElement.id.split("-")[0] != 1 && event.key == "Backspace") {
-        //     removeInputEl(document.activeElement.id.split("-")[0])
-        // }
-        // else {
-        //     focusPreviousLine();
-        // }
     }
 }
 
@@ -110,45 +110,41 @@ function moveRenderDiv() {
 }
 
 function addInputEl() {
-    var div = document.createElement('div');
-    var raw = document.createElement('span');
-    var pretty = document.createElement('div');
+
+    var current = document.activeElement;
     var input = document.createElement('input');
     var size = document.getElementsByClassName("inputEl").length;
 
-    pretty.className = "pretty";
-    raw.className = "raw";
     input.className = "inputEl";
     input.id = (size + 1) + "-i";
     input.type = "text";
-    input.keydown = function(event){keyHandler(event)}; 
-    div.id = (size + 1 ) + "-r";
-    div.className = "row";
-    div.appendChild(raw);
-    div.appendChild(pretty);
+    updateIdList();
 
-    document.getElementById("inputArray").appendChild(input);
-    document.getElementById("render").appendChild(div);
+    var add = current.value.substr(current.selectionStart, current.value.length - current.selectionStart);
+    current.value = current.value.substr(0, current.selectionStart);
+
+    document.getElementById("inputArray").insertBefore(input, current.nextSibling);
+    current.nextSibling.value += add;
+
+    setCaretPosition((((current.id.split("-")[0]) + 1) + "-i"), 0);
 
     moveRenderDiv();
+    updateIdList();
     focusNextLine();
     addNumber();
 
-    document.getElementById("1-i").placeholder = ""
+    document.getElementById("1-i").placeholder = "";
 }
 
 function removeInputEl(num) {
     var input = document.getElementById(num + "-i");
-    var raw = document.getElementById(num + "-r");
     var val = input.value;
     var len = document.getElementById((num - 1) + "-i").value.length;
     
     document.getElementById((num - 1) + "-i").value += val;
-    document.getElementById((num - 1) + "-r").childNodes[0].innerHTML += val;
     
     setCaretPosition(((num - 1) + "-i"), len)
     input.parentNode.removeChild(input);
-    raw.parentNode.removeChild(raw);
 
     updateIdList();
     moveRenderDiv();
@@ -159,10 +155,12 @@ function removeInputEl(num) {
     }
 }
 
+function replaceAll(str, search, replacement) {
+    return str.replace(new RegExp(search, 'g'), replacement);
+};
+
 function renderCont() {
-    var el = document.activeElement;
-    var raw = document.getElementById(el.id.split('-')[0] + "-r").childNodes[0]
-    raw.innerHTML = el.value;
+    var el = document.activeElement;    
 
     renderFullCode();
 }
@@ -173,8 +171,7 @@ function renderFullCode() {
     code.innerHTML = "";
 
     for ( var i = 0; i < inputs.getElementsByClassName("inputEl").length; i++ ) {
-        code.innerHTML += inputs.getElementsByClassName("inputEl")[i].value;
-        console.log( inputs.getElementsByClassName("inputEl")[i]);
+        code.innerHTML += inputs.getElementsByClassName("inputEl")[i].value.replace(new RegExp('<', 'g'), "<&zwj;");
         code.innerHTML += "\n";
     }
 
@@ -204,11 +201,12 @@ function setCaretPosition(elemId, caretPos) {
 
 $( "#inputArray" ).on("keydown", ".inputEl", function(event){
     keyHandler(event);
+    encodePreElements();
+    renderCont();
 });
 
 $( "#inputArray" ).on("focus", ".inputEl", function(event){
     brighten();
-    
 });
 
 $( "#inputArray" ).on("focusout", ".inputEl", function(event){
@@ -216,15 +214,32 @@ $( "#inputArray" ).on("focusout", ".inputEl", function(event){
 });
 
 $( "#inputArray" ).on("input", "input", function(event){
+    encodePreElements();
     renderCont();
 });
 
 $(document).ready(function() {
     document.getElementById("1-i").focus();
+    updateH();
 });
 
 function updateH() {
     document.querySelectorAll('pre').forEach((block) => {
         hljs.highlightBlock(block);
     });
+}
+
+function encodePreElements() {
+    var pre = document.getElementsByTagName('pre');
+    for(var i = 0; i < pre.length; i++) {
+        var encoded = htmlEncode(pre[i].innerHTML);
+        pre[i].innerHTML = encoded;
+    }
+};
+
+function htmlEncode(value) {
+   var div = document.createElement('div');
+   var text = document.createTextNode(value);
+   div.appendChild(text);
+   return div.innerHTML;
 }
