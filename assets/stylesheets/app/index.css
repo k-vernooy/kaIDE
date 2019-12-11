@@ -255,7 +255,6 @@
     position: relative;
     white-space: nowrap;
     line-height: 20px;
-
     caret-color: white;
 }
 
@@ -263,33 +262,24 @@
     background: #95b4c7;
 }
 
+#inputArray input:focus {
+    background-color: rgba(0, 0, 0, 0.116);
+    color: rgba(255, 255, 255, 0.171);
+}
+
 #render {
-    /* background: white; */
-    /* background-color: rgba(255, 255, 255, 0); */
     width: 100%;
     height: 100%;
     top: -18px;
     position: relative;
 }
 
-#render .row {
-    width: 100%;
-    height: 18px;
-    background-color: rgba(0, 0, 83, 0);
-}
-
-#render .row.dark {
-    background-color: rgba(0, 0, 0, 0.349);
-}
-
 .raw {
-    font-weight: lighter;
-    /* background-color: transparent; */
-    color: rgb(207, 207, 207);
-    font-size: 13px;
-    font-family: "Monaco";
-    white-space: nowrap;
-    /* line-height: 20px; */
+    display: none;
+}
 
-    caret-color: white;
+#highlighted {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0);
 }
