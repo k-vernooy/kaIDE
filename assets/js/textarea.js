@@ -19,7 +19,7 @@ function darken() {
 function keyHandler(event) {
     var size = document.getElementsByClassName("inputEl").length;
     var pos = document.activeElement.id.split("-")[0];
-
+    console.log()
     if ( event.key == "Enter" ) {
         addInputEl();
     }
@@ -35,6 +35,14 @@ function keyHandler(event) {
     else if ( event.key == "Backspace" || event.key == "ArrowLeft" ) {
         focusLeftLine(event);
     }
+    else if ( event.key == "Tab" ) {
+        tabHandler(event);
+    }
+}
+
+function tabHandler(e) {
+    e.preventDefault();
+    document.activeElement.value += "    ";
 }
 
 function updateIdList() {
@@ -126,12 +134,14 @@ function addInputEl() {
     document.getElementById("inputArray").insertBefore(input, current.nextSibling);
     current.nextSibling.value += add;
 
-    setCaretPosition((((current.id.split("-")[0]) + 1) + "-i"), 0);
+
 
     moveRenderDiv();
     updateIdList();
     focusNextLine();
     addNumber();
+
+    setCaretPosition(((parseInt(current.id.split("-")[0]) + 1) + "-i"), 0);
 
     document.getElementById("1-i").placeholder = "";
 }
@@ -171,7 +181,7 @@ function renderFullCode() {
     code.innerHTML = "";
 
     for ( var i = 0; i < inputs.getElementsByClassName("inputEl").length; i++ ) {
-        code.innerHTML += inputs.getElementsByClassName("inputEl")[i].value.replace(new RegExp('<', 'g'), "<&zwj;");
+        code.innerHTML += inputs.getElementsByClassName("inputEl")[i].value;
         code.innerHTML += "\n";
     }
 
@@ -198,6 +208,36 @@ function setCaretPosition(elemId, caretPos) {
     }
 }
 
+function updateH() {
+    document.querySelectorAll('pre').forEach((block) => {
+        hljs.highlightBlock(block);
+    });
+}
+
+function encodePreElements() {
+    var pre = document.getElementsByTagName('pre');
+    for(var i = 0; i < pre.length; i++) {
+        var encoded = htmlEncode(pre[i].innerHTML);
+        pre[i].innerHTML = encoded;
+    }
+};
+
+function htmlEncode(value) {
+   var div = document.createElement('div');
+   var text = document.createTextNode(value);
+   div.appendChild(text);
+   return div.innerHTML;
+}
+
+function focusLastLine() {
+    document.getElementById("inputArray").lastElementChild.focus();
+}
+
+// handle events and key presses
+
+var keys = {};
+window.onkeyup = function(e) { keys[e.keyCode] = false; }
+window.onkeydown = function(e) { keys[e.keyCode] = true; }
 
 $( "#inputArray" ).on("keydown", ".inputEl", function(event){
     keyHandler(event);
@@ -220,26 +260,4 @@ $( "#inputArray" ).on("input", "input", function(event){
 
 $(document).ready(function() {
     document.getElementById("1-i").focus();
-    updateH();
 });
-
-function updateH() {
-    document.querySelectorAll('pre').forEach((block) => {
-        hljs.highlightBlock(block);
-    });
-}
-
-function encodePreElements() {
-    var pre = document.getElementsByTagName('pre');
-    for(var i = 0; i < pre.length; i++) {
-        var encoded = htmlEncode(pre[i].innerHTML);
-        pre[i].innerHTML = encoded;
-    }
-};
-
-function htmlEncode(value) {
-   var div = document.createElement('div');
-   var text = document.createTextNode(value);
-   div.appendChild(text);
-   return div.innerHTML;
-}
