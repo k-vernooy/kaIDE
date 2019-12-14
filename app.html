@@ -40,12 +40,25 @@
 		<div id='content'>
 
 			<div id='ide'>
+				<!-- <div id='sliderBar'></div> -->
 				<div id='navCol'>
+					<div class='sideButton'>
+					<i class="material-icons">search</i>
+					</div>
 					<div class='sideButton active'>
-						<i class="material-icons">search</i>
+						<i class="material-icons">file_copy</i>
 					</div>
 					<div class='sideButton'>
-							<i class="material-icons">file_copy_outline</i>
+						<i class="material-icons">bug_report</i>
+					</div>
+					<div class='sideButton'>
+						<i class="material-icons">extension</i>
+					</div>
+					<div class='sideButton'>
+						<i class="material-icons">settings_applications</i>
+					</div>
+					<div class='sideButton'>
+						<i class="material-icons">color_lens</i>
 					</div>
 					<div class='sideButton'></div>
 				</div>
@@ -73,20 +86,7 @@
 					</div>
 				</div>
 				<div id='colsCont'>
-					<div class='topRow' id='buttonsRow'>
-						<div class='icon'>
-							<img src='assets/images/icons/new.svg' width=30px>
-						</div>
-						<div class='icon'>
-							<img src='assets/images/icons/save.svg' width=30px>
-						</div>
-						<div class='icon'>
-							<img src='assets/images/icons/run.svg' width=30px>
-						</div>
-
-					</div>
-					
-					<div class='topRow' id='tabsRow'>
+					<div id='tabsRow'>
 						<div class='tab focusTab' onclick=switchTab(this)>
 							index.html
 						</div><div class='tab' onclick=switchTab(this)>
@@ -116,8 +116,9 @@
 		</div>
 
 		<script src="assets/js/textarea.js"></script>
+		<script src="assets/js/sidebar.js"></script>
 		<script src="assets/js/filebar.js"></script>
-		<script src="assets/js/misc.js"></script>
+		<script src="assets/js/toptabs.js"></script>
 		<footer>
 		</footer>
 	</body>
