@@ -64,7 +64,7 @@
 
 #colsCont {
     display: inline-block;
-    width: calc(75% - 6px);
+    width: calc(100% - 260px);
     height: calc(100% - (var(--tabsHeight) * 2) - 10px);
     vertical-align: top;
 }
@@ -149,7 +149,7 @@
 /* FOR THE LEFTHAND COLUMN OF FILES */
 /* ====================================== */
 #leftCol {
-    width: 25%;
+    width: 200px;
     height: calc(100% - 20px);
     padding-top: 20px;
     display: inline-block;
@@ -282,4 +282,40 @@
     width: 100%;
     height: 100%;
     background-color: rgba(255, 255, 255, 0);
+}
+
+#navCol {
+    width: 45px;
+    height: calc(100% - 20px);
+    padding-top: 20px;
+    vertical-align: top;
+    display: inline-block;
+    background-color: var(--main-color-dark);
+}
+
+.sideButton {
+    width: 40px;
+    height: 35px;
+    color: rgb(148, 148, 148);
+    margin-bottom: 15px;
+    padding-left: 7px;
+    cursor: pointer;
+    padding-top: 10px;
+}
+
+.sideButton:hover {
+    color: rgb(199, 199, 199);
+}
+
+.sideButton.active {
+    color: rgb(233, 233, 233);
+    border-left: 3px solid rgba(255, 255, 255, 0.788);
+}
+
+
+.material-icons {
+    font-family: 'Material Icons Sharp';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 25px;
 }

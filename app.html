@@ -13,6 +13,8 @@
 		<link rel="stylesheet" href="assets/stylesheets/app/highlight-theme.css">
 		<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.16.2/build/highlight.min.js"></script>
 		<script>hljs.initHighlightingOnLoad();</script>
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+        <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"> -->
 
 	</head>
 	<body>
@@ -38,6 +40,15 @@
 		<div id='content'>
 
 			<div id='ide'>
+				<div id='navCol'>
+					<div class='sideButton active'>
+						<i class="material-icons">search</i>
+					</div>
+					<div class='sideButton'>
+							<i class="material-icons">file_copy_outline</i>
+					</div>
+					<div class='sideButton'></div>
+				</div>
 				<div id='leftCol'>
 					<div class='folder'>
 						<div class='cont' onclick='showChildren(this)'>
@@ -92,8 +103,8 @@
 								<input class='inputEl' id='1-i' type='text' placeholder="" autofocus>
 							</div>
 							<div id='render'>
-								<div id='highlighted'>
-									<pre class='css' id='code'>add code here</pre>
+								<div id='highlighted' onmouseup="focusLastLine();">
+									<pre class='css' id='code'></pre>
 								</div>
 							</div>
 						</div>
