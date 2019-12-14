@@ -3,10 +3,13 @@
 
 
     /* BACKGROUND COLORS */ 
-    --main-color: rgb(35, 40, 51);
-    --main-color-bright: rgb(43, 49, 63);
-    --main-color-dark: rgb(29, 33, 43);
-    --main-color-darker: rgb(20, 23, 31);
+    --main-color: rgb(29, 33, 43);
+
+    --main-color-bright: rgb(35, 40, 51);
+    --main-color-brighter: rgb(41, 47, 59);
+
+    --main-color-dark: rgb(20, 23, 31);
+    --main-color-darker: rgb(14, 16, 22);
 
     --ide-width: 70%;
 }
@@ -23,7 +26,7 @@
 #ide {
     width: var(--ide-width);
     height: calc(100vh - 60px);
-    background-color: var(--main-color-darker);
+    background-color: var(--main-color-dark);
     resize: horizontal;
     overflow: hidden;
 }
@@ -43,13 +46,6 @@
 }
 
 
-.topRow {
-    width: 100%;
-    background-color: var(--main-color-dark);
-    height: var(--tabsHeight);
-    display: inline-block;
-}
-
 #buttonsRow {
     margin-bottom: 5px;
     height: 70px;
@@ -65,7 +61,7 @@
 #colsCont {
     display: inline-block;
     width: calc(100% - 260px);
-    height: calc(100% - (var(--tabsHeight) * 2) - 10px);
+    height: calc(100vh - 100px);
     vertical-align: top;
 }
 
@@ -99,6 +95,13 @@
     position: relative;
     top: 19px;
     z-index: 4;
+}
+
+#tabsRow {
+    width: 100%;
+    background-color: var(--main-color-dark);
+    height: var(--tabsHeight);
+    display: inline-block;
 }
 
 .tab {
@@ -301,6 +304,7 @@
     padding-left: 7px;
     cursor: pointer;
     padding-top: 10px;
+    border-left: 3px solid transparent;
 }
 
 .sideButton:hover {

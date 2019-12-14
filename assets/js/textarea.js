@@ -6,16 +6,6 @@ var bg = document.getElementById("textInput");
 var focusTab = document.getElementsByClassName("focusTab")[0];
 var bar = document.getElementById("blackLine")
 
-function brighten() {
-    bg.className += " bright";
-    document.getElementsByClassName("focusTab")[0].className += " bright";
-}
-
-function darken() {
-    bg.className = "";
-    document.getElementsByClassName("focusTab")[0].className = "tab focusTab";
-}
-
 function keyHandler(event) {
     var size = document.getElementsByClassName("inputEl").length;
     var pos = document.activeElement.id.split("-")[0];
@@ -38,6 +28,30 @@ function keyHandler(event) {
     else if ( event.key == "Tab" ) {
         tabHandler(event);
     }
+    else if ( event.key == "{" || event.key == "(" || event.key == "[" ) {
+        closeOpenerCharacter(event);
+    }
+}
+
+function closeOpenerCharacter(e) {
+    e.preventDefault();
+
+    var key = e.key;
+    var rep = "]";
+    
+    if ( key == "{" ) {
+        rep = "}"
+    }
+    else if ( event.key == "(") {
+        rep = ")"
+    }
+
+    var pos = document.activeElement.selectionStart;
+    var val = document.activeElement.value;
+
+    document.activeElement.value = [val.slice(0, pos), (key + rep), val.slice(pos)].join('');
+
+    setCaretPosition(document.activeElement.id, (pos + 1));
 }
 
 function tabHandler(e) {
