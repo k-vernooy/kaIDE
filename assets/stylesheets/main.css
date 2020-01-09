@@ -143,3 +143,24 @@ p {
 	background-color: var(--purple-one);
 	color: black;
 }
+
+#right-nav {
+	display: inline-block;
+	position: absolute;
+	right: 0px;
+	/* width: 200px; */
+	text-align: center;
+}
+
+#navBar #signUpButton {
+	display: inline-block;
+	/* width: 120px; */
+	padding: 3px;
+	line-height: 40px;
+	border: 2px solid rgb(57, 109, 250);
+}
+
+.mainButton#signUpButton:hover {
+	color: white;
+	background-color: rgb(57, 109, 250);
+}
