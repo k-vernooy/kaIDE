@@ -12,7 +12,7 @@ function dynamicKeyHandler(event) {
     var textarea = event.target;
 
     if (event.key == "Enter" || event.key == "Backspace" || event.key == "Delete") {
-        updateNumbers(cursorPosition(textarea)[0], textarea);
+        updateNumbers(textarea);
     }
 }
 
@@ -46,7 +46,8 @@ function updateH() {
     });
 }
 
-function updateNumbers(newNum, textarea) {
+function updateNumbers(textarea) {
+    var newNum = textarea.value.split("\n").length;
     var numbers = textarea.parentNode.parentNode.children[0];
     var exist = $(numbers).children('div').length;
 
