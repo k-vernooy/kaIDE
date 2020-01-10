@@ -1,23 +1,46 @@
 // FOR ALL THE FUNCTIONS REGARDING THE MAIN TEXTAREA
+var textarea = document.getElementById("textarea");
 
-function keyHandler(event) {
-    var size = document.getElementsByClassName("inputEl").length;
-    var pos = document.activeElement.id.split("-")[0];
-    console.log(event.key);
-    if ( event.key == "Enter" ) {
-        console.log("Move black line");
+function staticKeyHandler(event) {
+    if (event.key == "Tab") {
+        event.preventDefault();
+        console.log("tab");
     }
 }
 
-function updateText() {
-    // move textarea content to render div
+function dynamicKeyHandler(event) {
+    if (event.key == "Enter" || event.key == "Backspace" || event.key == "Delete") {
+        updateNumbers(cursorPosition(textarea)[0]);
+    }
 }
 
-$( "#textarea" ).on("input", function(event){
-    keyHandler(event);
-    updateText();
+function cursorPosition(textarea) {
+    var line = textarea.value.substr(0, textarea.selectionStart).split("\n").length;
+    var total = textarea.selectionStart;
+    return [line, total];
+}
+
+$( "#textarea" ).on("keydown", function(event) {
+    staticKeyHandler(event);
+
+    setTimeout(function () {
+        dynamicKeyHandler(event);
+        renderCode();
+    }, 0 )
 });
 
+
+function renderCode() {
+    var code = document.getElementById("code");
+    code.innerHTML = document.getElementById("textarea").value;
+    updateH();
+}
+
+function updateH() {
+    document.querySelectorAll('pre').forEach((block) => {
+        hljs.highlightBlock(block);
+    });
+}
 
 // var numbers = document.getElementById("numbers");
 // var textarea = document.getElementById("inputText");
@@ -86,20 +109,37 @@ $( "#textarea" ).on("input", function(event){
 //     }
 // }
 
-// function addNumber() {
-//     var exist = $("#numbers > div").length;
-//     var ap = document.createElement("div");
-//     ap.className = "number";
-//     ap.innerHTML = exist + 1;
+function updateNumbers(newNum) {
+    const exist = $("#numbers > div").length;
 
-//     document.getElementById("numbers").appendChild(ap);
-// }
+    if (exist != newNum) {
+        if (newNum > exist) {
+            for (var i = 0; i < newNum - exist; i++) {
+                addNumber();
+            }
+        }
+        else {
+            for (var i = 0; i < exist - newNum; i++) {
+                removeNumber();
+            }
+        }
+    }
+}
 
-// function removeNumber() {
-//     var exist = $("#numbers > div").length;
-//     var re = document.getElementsByClassName("number")[exist - 1];
-//     re.parentNode.removeChild(re);
-// }
+function addNumber() {
+    var exist = $("#numbers > div").length;
+    var ap = document.createElement("div");
+    ap.className = "number";
+    ap.innerHTML = exist + 1;
+
+    document.getElementById("numbers").appendChild(ap);
+}
+
+function removeNumber() {
+    var exist = $("#numbers > div").length;
+    var re = document.getElementsByClassName("number")[exist - 1];
+    re.parentNode.removeChild(re);
+}
 
 // function getSelectionText() {
 //     var text = "";
