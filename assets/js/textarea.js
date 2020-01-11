@@ -13,23 +13,25 @@ function tabHandler(e) {
     var textarea = e.target;
     e.preventDefault();
 
-    var pos = textarea.selectionStart;
-    var insert = "    ";
-    var target = textarea.value;
-    
-    textarea.value = [target.slice(0, pos), insert, target.slice(pos)].join('');
-    setCaretPosition(textarea, pos + 4);
+    textarea.value = insertAtCursor(textarea, textarea.value, "    ");
+
+    setCaretPosition(textarea, textarea.selectionStart + 4);
 }
 
 function dynamicKeyHandler(event) {
     var textarea = event.target;
-
     var posLineKeys = ["Delete", "Backspace", "Enter", "ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"]
-
     if (event.key == "Enter" || event.key == "Backspace" || event.key == "Delete")
         updateNumbers(textarea);
     if (posLineKeys.includes(event.key))
         positionLine(textarea);
+    if (event.key == "<") {
+        // textarea.value = insertAtCursor(textarea, textarea.value, "\<");
+    }
+}
+
+function insertAtCursor(textarea, value, insert) {
+    return [value.slice(0, textarea.selectionStart), insert, value.slice(textarea.selectionStart)].join('');
 }
 
 function positionLine(textarea) {

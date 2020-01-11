@@ -42,29 +42,32 @@
 			<div id='ide'>
 				<!-- <div id='sliderBar'></div> -->
 				<div id='navCol'>
-					<div class='sideButton'>
-					<i class="material-icons">search</i>
+					<div class='sideButton' id='search_button'>
+						<i class="material-icons">search</i>
 					</div>
-					<div class='sideButton active'>
+					<div class='sideButton active' id='files_button'>
 						<i class="material-icons">file_copy</i>
 					</div>
-					<div class='sideButton'>
+					<div class='sideButton' id='debug_button'>
 						<i class="material-icons">bug_report</i>
 					</div>
-					<div class='sideButton'>
+					<div class='sideButton' id='exts_button'>
 						<i class="material-icons">extension</i>
 					</div>
-					<div class='sideButton'>
+					<div class='sideButton' id='settings_button'>
 						<i class="material-icons">settings_applications</i>
 					</div>
-					<div class='sideButton'>
+					<div class='sideButton' id='colors_button'>
 						<i class="material-icons">color_lens</i>
 					</div>
 					<div class='sideButton'></div>
 				</div>
 
 				<div id='leftCol'>
-					<div id='search'></div>
+					<div id='search'>
+						<div></div>
+						
+					</div>
 					<div id='files'>
 						<div class='folder'>
 							<div class='cont' onclick='showChildren(this)'>
