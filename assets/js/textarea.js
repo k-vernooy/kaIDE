@@ -1,19 +1,49 @@
 // FOR ALL THE FUNCTIONS REGARDING THE MAIN TEXTAREA
 function staticKeyHandler(event) {
     
-    var textarea = event.target;
+    // var textarea = event.target;
+    // console.log(event.key);
 
-    if (event.key == "Tab") {
-        event.preventDefault();
-    }
+    if (event.key == "Tab")
+        tabHandler(event);
+}
+
+function tabHandler(e) {
+
+    var textarea = e.target;
+    e.preventDefault();
+
+    var pos = textarea.selectionStart;
+    var insert = "    ";
+    var target = textarea.value;
+    
+    textarea.value = [target.slice(0, pos), insert, target.slice(pos)].join('');
+    setCaretPosition(textarea, pos + 4);
 }
 
 function dynamicKeyHandler(event) {
     var textarea = event.target;
 
-    if (event.key == "Enter" || event.key == "Backspace" || event.key == "Delete") {
+    var posLineKeys = ["Delete", "Backspace", "Enter", "ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"]
+
+    if (event.key == "Enter" || event.key == "Backspace" || event.key == "Delete")
         updateNumbers(textarea);
-    }
+    if (posLineKeys.includes(event.key))
+        positionLine(textarea);
+}
+
+function positionLine(textarea) {
+    var line = textarea.parentNode.children[2];
+    var lineNum = cursorPosition(textarea)[0];
+
+    var add = ((lineNum - 1) * 20) - 6;
+
+    var printChar = '+';
+    if ( add < 0 )
+        printChar = "-"
+
+    line.style.top = "calc(-200% " + printChar + " " + Math.abs(add) + "px)"
+    line.style.top = add
 }
 
 function cursorPosition(textarea) {
@@ -35,7 +65,7 @@ $( ".textarea" ).on("keydown", function(event) {
 
 function renderCode(textarea) {
     var code = textarea.parentNode.children[1].children[0].children[0];
-    console.log(code);
+    // console.log(code);
     code.innerHTML = textarea.value;
     updateH();
 }
@@ -89,25 +119,24 @@ function removeNumber(numbers) {
 //     return text;
 // }
 
-// function setCaretPosition(elemId, caretPos) {
-//     var elem = document.getElementById(elemId);
+function setCaretPosition(elem, caretPos) {
 
-//     if(elem != null) {
-//         if(elem.createTextRange) {
-//             var range = elem.createTextRange();
-//             range.move('character', caretPos);
-//             range.select();
-//         }
-//         else {
-//             if(elem.selectionStart) {
-//                 elem.focus();
-//                 elem.setSelectionRange(caretPos, caretPos);
-//             }
-//             else
-//                 elem.focus();
-//         }
-//     }
-// }
+    if (elem != null) {
+        if (elem.createTextRange) {
+            var range = elem.createTextRange();
+            range.move('character', caretPos);
+            range.select();
+        }
+        else {
+            if(elem.selectionStart) {
+                elem.focus();
+                elem.setSelectionRange(caretPos, caretPos);
+            }
+            else
+                elem.focus();
+        }
+    }
+}
 
 // $( "#inputArray" ).on("focus", ".inputEl", function(event){
 //     brighten();

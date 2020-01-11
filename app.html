@@ -63,38 +63,56 @@
 					<div class='sideButton'></div>
 				</div>
 				<div id='leftCol'>
-					<div class='folder'>
-						<div class='cont' onclick='showChildren(this)'>
-							<div class='arrow'></div>
-							<div class='fileImage'></div>
-							<div class='fileText'>
-								<p class='fileLabel' id='projectTitle'>myProject</p>
+					<div id='folders'>
+						<div class='folder'>
+							<div class='cont' onclick='showChildren(this)'>
+								<div class='arrow'></div>
+								<div class='fileImage'></div>
+								<div class='fileText'>
+									<p class='fileLabel' id='projectTitle'>myProject</p>
+								</div>
 							</div>
-						</div>
-						
-						<div class='children' style='display: none'>
-							<div class='file'>
-								<div class='cont'>
-									<div class='fileImage'></div>
-									<div class='fileText'>
-										<p class='fileLabel' id='projectTitle'>index.html</p>
+							
+							<div class='children' style='display: none'>
+								<div class='file'>
+									<div class='cont'>
+										<div class='fileImage'></div>
+										<div class='fileText'>
+											<p class='fileLabel' id='projectTitle'>index.html</p>
+										</div>
 									</div>
 								</div>
 							</div>
+								
 						</div>
-							
 					</div>
 				</div>
 				<div id='colsCont'>
 					<div id='tabsRow'>
-						<div class='tab focusTab' onclick=switchTab(this)>
+						<div id='index.html_tab' class='tab focusTab' onclick=switchTab(this)>
 							index.html
-						</div><div class='tab' onclick=switchTab(this)>
+						</div><div id='main.css_tab' class='tab' onclick=switchTab(this)>
 							main.css
 						</div>
 					</div>
 
 					<div id="index.html" class='codearea'>
+						<div class='numbers'>
+							<div class='number'>1</div>
+						</div>
+						<div id='textCont'>
+
+							<textarea class='textarea'></textarea>
+
+							<div id='render'>
+								<div id='highlighted'">
+									<pre class='css' id='code'></pre>
+								</div>
+							</div>
+							<div class='darkbar'></div>
+						</div>
+					</div>
+					<div id="main.css" class='codearea' style='display: none'>
 						<div class='numbers'>
 							<div class='number'>1</div>
 						</div>
