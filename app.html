@@ -2,20 +2,23 @@
 <html>
 	<head>
 		<title>kaIDE | App</title>
-
+		<!-- stylesheets -->
 		<link rel='stylesheet' href='assets/stylesheets/main.css'>
 		<link rel='stylesheet' href='assets/stylesheets/app/index.css'>
+		<link rel='stylesheet' href='assets/stylesheets/app/search.css'>
+		<!-- favicon -->
 		<link rel='icon' href='favicon.png' type='image/x-icon'>
-		
 		<meta name='viewport' content='width=device-width, initial-scale=1.0'>
-		
+		<!-- jquery -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<!-- highlight.js -->
 		<link rel="stylesheet" href="assets/stylesheets/app/highlight-theme.css">
 		<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.16.2/build/highlight.min.js"></script>
 		<script>hljs.initHighlightingOnLoad();</script>
+		<!-- Material icons -->
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
-        <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet"> -->
 
+		<link rel="stylesheet" href="assets/fonts/inter/inter.css">
 	</head>
 	<body>
 		
@@ -48,9 +51,9 @@
 					<div class='sideButton active' id='files_button'>
 						<i class="material-icons">file_copy</i>
 					</div>
-					<div class='sideButton' id='debug_button'>
+					<!-- <div class='sideButton' id='debug_button'>
 						<i class="material-icons">bug_report</i>
-					</div>
+					</div> -->
 					<div class='sideButton' id='exts_button'>
 						<i class="material-icons">extension</i>
 					</div>
@@ -65,36 +68,49 @@
 
 				<div id='leftCol'>
 					<div id='search'>
-						<div></div>
-						
+						<div class='header'>SEARCH</div>
+						<input id='search_project' type="text" placeholder="Search">
+						<input id='replace_project' type="text" placeholder="Replace">
 					</div>
 					<div id='files'>
-						<div class='folder'>
-							<div class='cont' onclick='showChildren(this)'>
-								<div class='arrow'></div>
-								<div class='fileImage'></div>
-								<div class='fileText'>
-									<p class='fileLabel' id='projectTitle'>myProject</p>
+						<div class='header'>EXPLORER</div>
+						<div class='workspace' id='workspace1'>
+							<div id='workspace1_header' class='workspace-header'>WORKSPACE</div>
+							<div class='folder'>
+								<div class='cont' onclick='showChildren(this)'>
+									<div class='arrow'></div>
+									<div class='fileImage'></div>
+									<div class='fileText'>
+										<p class='fileLabel' id='projectTitle'>myProject</p>
+									</div>
 								</div>
-							</div>
-							
-							<div class='children' style='display: none'>
-								<div class='file'>
-									<div class='cont'>
-										<div class='fileImage'></div>
-										<div class='fileText'>
-											<p class='fileLabel' id='projectTitle'>index.html</p>
+								
+								<div class='children' style='display: none'>
+									<div class='file'>
+										<div class='cont'>
+											<div class='fileImage'></div>
+											<div class='fileText'>
+												<p class='fileLabel' id='projectTitle'>index.html</p>
+											</div>
 										</div>
 									</div>
 								</div>
+									
 							</div>
-								
 						</div>
 					</div>
-					<div id='debug'></div>
-					<div id='exts'></div>
-					<div id='settings'></div>
-					<div id='colors'></div>
+					<!-- <div id='debug'>
+						<div class='header'></div>
+					</div> -->
+					<div id='exts'>
+						<div class='header'>EXTENSIONS</div>
+					</div>
+					<div id='settings'>
+						<div class='header'>SETTINGS</div>
+					</div>
+					<div id='colors'>
+						<div class='header'>THEMES</div>
+					</div>
 				</div>
 				<div id='colsCont'>
 					<div id='tabsRow'>
@@ -109,7 +125,7 @@
 						<div class='numbers'>
 							<div class='number'>1</div>
 						</div>
-						<div id='textCont'>
+						<div class='textCont'>
 
 							<textarea class='textarea' placeholder="add code here"></textarea>
 
@@ -125,13 +141,13 @@
 						<div class='numbers'>
 							<div class='number'>1</div>
 						</div>
-						<div id='textCont'>
+						<div class='textCont'>
 
 							<textarea class='textarea'></textarea>
 
 							<div id='render'>
 								<div id='highlighted'">
-									<pre class='css' id='code'></pre>
+									<pre class='css'></pre>
 								</div>
 							</div>
 							<div class='darkbar'></div>

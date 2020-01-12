@@ -1,0 +1,16 @@
+#search {
+    text-align: center;
+}
+
+input {
+    border: none;
+    outline: none;
+    height: 26px;
+    padding: 2px 8px;
+    width: 75%;
+    margin: 4px;
+    font-size: 13px;
+    background-color: rgba(0, 0, 0, 0.418);
+    color: var(--main-text-color);
+    font-family: var(--main-sans-font);
+}
