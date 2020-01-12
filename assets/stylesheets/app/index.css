@@ -1,17 +1,22 @@
 :root {
     --tabsHeight: 40px;
 
-
     /* BACKGROUND COLORS */ 
-    --main-color: rgb(29, 33, 43);
-
-    --main-color-bright: rgb(35, 40, 51);
-    --main-color-brighter: rgb(41, 47, 59);
-
-    --main-color-dark: rgb(20, 23, 31);
+    --main-color: rgb(40, 44, 52);
+    --main-color-bright: rgb(51, 56, 66);
+    --main-color-brighter: rgb(62, 68, 82);
+    --main-color-dark: rgb(28, 32, 37);
     --main-color-darker: rgb(14, 16, 22);
 
-    --ide-width: 70%;
+    /* layout */
+    --ide-width: 100%;
+
+    /* text colors */
+    --main-text-color: rgb(177, 177, 177);
+
+    --main-mono-font: "Monaco";
+    --main-simple-font: "Inter";
+    --main-sans-font: "Soleil"
 }
 
 @font-face {
@@ -61,7 +66,7 @@
 .darkbar {
     width: 100%;
     height: 20px;
-    background-color: rgba(0, 0, 0, 0.171);
+    background-color: rgba(255, 255, 255, 0.05);
     position: relative;
     z-index: 0;
     top: calc(-200% - 6px);
@@ -74,8 +79,8 @@
     vertical-align: top;
 }
 
-#textCont {
-    width: calc(93% - 6px);
+.textCont {
+    width: calc(93% - 26px);
     display: inline-block;
     height: 100%;
 }
@@ -140,21 +145,24 @@
 }
 
 .numbers {
-    width: 7%;
+    width: 20px;
     display: inline-block;
     height: 100%;
+    padding-right: 15px;
+    padding-left: 8px;
     vertical-align: top;
 }
 
 .number {
     width: 100%;
     height: 18px;
-    text-align: center;
-    color: grey;
-    font-size: 16px;
-    line-height: 23px;
+    text-align: right;
+    color: rgb(99, 109, 131);
+    font-size: 12px;
+    line-height: 20px;
     padding-bottom: 2px;
-    font-weight: lighter;
+    font-weight: light;
+    font-family: var(--main-mono-font);
 }
 
 
@@ -162,8 +170,9 @@
 /* ====================================== */
 #leftCol {
     width: 200px;
-    height: calc(100% - 20px);
-    padding-top: 20px;
+    height: calc(100% - 5px);
+    padding-top: 5px;
+    padding-right: 5px;
     display: inline-block;
     background-color: var(--main-color-dark);
 }
@@ -260,13 +269,13 @@ textarea {
     background-color: transparent;
     outline: none;
     border: none;
-    caret-color: white;
-    font-size: 13px;
-    font-family: "Monaco";
+    font-size: 12px;
+    font-family: var(--main-mono-font);
     z-index: 5;
     position: relative;
     white-space: nowrap;
     line-height: 20px;
+    caret-color: rgb(82, 139, 255);
 }
 
 textarea::selection {
@@ -283,7 +292,7 @@ textarea::selection {
     background-color: transparent;
     color: transparent;
     font-size: 13px;
-    font-family: "Monaco";
+    font-family: var(--main-mono-font);
     z-index: 5;
     position: relative;
     white-space: nowrap;
@@ -324,7 +333,7 @@ textarea::selection {
     padding-top: 20px;
     vertical-align: top;
     display: inline-block;
-    background-color: var(--main-color-dark);
+    background-color: var(--main-color-bright);
 }
 
 .sideButton {
@@ -353,4 +362,35 @@ textarea::selection {
     font-style: normal;
     font-weight: 300;
     font-size: 25px;
+}
+
+#leftCol .header {
+    width: 100%;
+    height: 25px;
+    background-color: rgba(0, 0, 0, 0);
+    top: 0px;
+    margin-bottom: 20px;
+    font-family: "Inter";
+    color: var(--main-text-color);
+    padding-left: 15px;
+    font-size: 12px;
+    padding-top: 7px;
+    font-weight: 400;
+    text-align: left;
+}
+
+.workspace {
+    width: 100%;
+}
+
+.workspace .workspace-header {
+    width: 95%;
+    height: 20px;
+    background-color: var(--main-color-brighter);
+    color: var(--main-text-color);
+    font-family: "Inter";
+    padding-left: 15px;
+    font-size: 12px;
+    padding-top: 5px;
+    font-weight: 600;
 }

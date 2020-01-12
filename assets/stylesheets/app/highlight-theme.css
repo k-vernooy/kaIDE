@@ -1,17 +1,17 @@
 .hljs-comment, .hljs-quote {
-    color:#B6B18B
+    color:rgb(134, 153, 155)
 }
 
 .hljs-variable, .hljs-template-variable, .hljs-tag, .hljs-name, .hljs-selector-id, .hljs-selector-class, .hljs-regexp, .hljs-deletion {
-    color:#EB3C54
+    color:rgb(52, 172, 252)
 }
 
 .hljs-number, .hljs-built_in, .hljs-builtin-name, .hljs-literal, .hljs-type, .hljs-params, .hljs-meta, .hljs-link {
-    color:#E7CE56
+    color:rgb(231, 185, 86)
 }
 
 .hljs-attribute {
-    color:#EE7C2B
+    color:rgb(172, 184, 189)
 }
 
 .hljs-string, .hljs-symbol, .hljs-bullet, .hljs-addition {
@@ -28,21 +28,21 @@
 
 .hljs {
     display:block;
-    /* overflow: hidden; */
     background:rgba(28, 29, 33, 0);
     color:#c0c5ce;
-
     font-weight: lighter;
-    font-size: 13px;
+    font-size: 12px;
     font-family: "Monaco";
     line-height: 20px;
+    height: 100%;
+    overflow: auto;
     /* white-space: nowrap; */
 }
 
 .hljs-emphasis {
-    font-style:italic
+    font-style: italic
 }
 
 .hljs-strong {
-    font-weight:bold
+    font-weight: bold
 }
