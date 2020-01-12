@@ -5,27 +5,31 @@ function staticKeyHandler(event) {
     // console.log(event.key);
 
     if (event.key == "Tab")
-        tabHandler(event);
+        event.preventDefault();
+    if (event.key == "{")
+        event.preventDefault();
 }
 
 function tabHandler(e) {
-
     var textarea = e.target;
-    e.preventDefault();
-
+    var pos = textarea.selectionStart;
     textarea.value = insertAtCursor(textarea, textarea.value, "    ");
-
-    setCaretPosition(textarea, textarea.selectionStart + 4);
+    setCaretPosition(textarea, pos + 4);
 }
 
 function dynamicKeyHandler(event) {
     var textarea = event.target;
     var posLineKeys = ["Delete", "Backspace", "Enter", "ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"]
+
+    if (event.key == "Tab")
+        tabHandler(event);
     if (event.key == "Enter" || event.key == "Backspace" || event.key == "Delete")
         updateNumbers(textarea);
     if (posLineKeys.includes(event.key))
         positionLine(textarea);
-    if (event.key == "<") {
+    if (event.key == "{") {
+        textarea.value = insertAtCursor(textarea, textarea.value, "{}");
+        setCaretPosition(textarea, textarea.selectionStart - 1);
         // textarea.value = insertAtCursor(textarea, textarea.value, "\<");
     }
 }
@@ -62,6 +66,13 @@ $( ".textarea" ).on("keydown", function(event) {
         dynamicKeyHandler(event);
         renderCode(textarea);
     }, 0 )
+});
+
+$( ".textarea" ).on("scroll", function(event) {
+    var code = this.parentNode.children[1].children[0].children[0];
+    // console.log(code.scrollTop);
+    code.scrollTop = this.scrollTop;
+    code.scrollLeft = this.scrollLeft;
 });
 
 

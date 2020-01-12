@@ -1,8 +1,6 @@
-function showSection(e) {
+function showSection(el) {
     // select the correct sidebar
-    var el = e.target;
-    if (!el.id)
-        el = el.parentNode;
+
     var id = el.id.split("_")[0];
     
     var section = document.getElementById(id);
@@ -14,8 +12,10 @@ function showSection(e) {
     }
 
     // show the correct sidebar
-    section.style.display = "inline-block";
+    section.style.display = "block";
 }
+
+showSection(document.getElementById("files_button"));
 
 $( ".sideButton" ).on("click", function(event){
     var els = document.getElementsByClassName("sideButton");
@@ -26,5 +26,9 @@ $( ".sideButton" ).on("click", function(event){
     
     $(this).addClass("active");
 
-    showSection(event);
+    var el = event.target;
+    if (!el.id)
+        el = el.parentNode;
+
+    showSection(el);
 });
